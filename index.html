@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satyam Kumar — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Scroll progress ── -->
+  <div id="scroll-progress"></div>
+
+  <!-- ── Cursor ── -->
+  <div id="cursor"><div class="cursor-dot"></div></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ── Nav ── -->
+  <nav id="nav">
+    <div class="nav-logo">SK</div>
+    <div class="nav-links">
+      <a href="#about"   class="nav-link">About</a>
+      <a href="#work"    class="nav-link">Work</a>
+      <a href="#skills"  class="nav-link">Skills</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta magnetic" data-mag>Hire me</a>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <canvas id="c"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="hero-wrap">
+      <div class="hero-kicker" id="hk">
+        <span class="kicker-line"></span>
+        <span class="kicker-text">Available for work · India</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="ht-row" id="ht1"><em>Crafting</em></span>
+        <span class="ht-row" id="ht2">digital</span>
+        <span class="ht-row ht-accent" id="ht3">experiences.</span>
+      </h1>
+      <p class="hero-sub" id="hs">
+        Satyam Kumar — Frontend Developer &amp; CS Student.<br>
+        I turn ideas into polished, performant web interfaces.
+      </p>
+      <div class="hero-actions" id="ha">
+        <a href="#work" class="btn-primary magnetic" data-mag>
+          <span>View my work</span>
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Let's talk</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+      <span>Scroll</span>
+    </div>
+
+    <div class="stat-pill pill-1" id="p1">
+      <span class="pill-val">2+</span>
+      <span class="pill-lab">Years coding</span>
+    </div>
+    <div class="stat-pill pill-2" id="p2">
+      <span class="pill-val">4</span>
+      <span class="pill-lab">Certifications</span>
+    </div>
+  </section>
+
+  <!-- ═══ MARQUEE ═══ -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span>HTML</span><span class="sep">·</span>
+      <span>CSS</span><span class="sep">·</span>
+      <span>JavaScript</span><span class="sep">·</span>
+      <span>Python</span><span class="sep">·</span>
+      <span>Three.js</span><span class="sep">·</span>
+      <span>GSAP</span><span class="sep">·</span>
+      <span>Cybersecurity</span><span class="sep">·</span>
+      <span>Networking</span><span class="sep">·</span>
+      <span>C Programming</span><span class="sep">·</span>
+      <span>HTML</span><span class="sep">·</span>
+      <span>CSS</span><span class="sep">·</span>
+      <span>JavaScript</span><span class="sep">·</span>
+      <span>Python</span><span class="sep">·</span>
+      <span>Three.js</span><span class="sep">·</span>
+      <span>GSAP</span><span class="sep">·</span>
+      <span>Cybersecurity</span><span class="sep">·</span>
+      <span>Networking</span><span class="sep">·</span>
+      <span>C Programming</span><span class="sep">·</span>
+    </div>
+  </div>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="about-wrap">
+      <div class="about-left">
+        <div class="tag reveal-tag">About</div>
+        <div class="about-portrait">
+          <div class="portrait-ring"></div>
+          <div class="portrait-inner">
+            <svg viewBox="0 0 120 120" fill="none" class="avatar-svg">
+              <circle cx="60" cy="60" r="58" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <circle cx="60" cy="44" r="20" fill="rgba(200,180,255,0.08)" stroke="rgba(200,180,255,0.15)" stroke-width="1"/>
+              <circle cx="60" cy="44" r="10" fill="rgba(200,180,255,0.18)"/>
+              <ellipse cx="60" cy="96" rx="32" ry="20" fill="rgba(200,180,255,0.06)" stroke="rgba(200,180,255,0.1)" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about-meta">
+          <div class="meta-row"><span class="meta-k">Degree</span><span class="meta-v">BTech CS</span></div>
+          <div class="meta-row"><span class="meta-k">University</span><span class="meta-v">DIT University</span></div>
+          <div class="meta-row"><span class="meta-k">Batch</span><span class="meta-v">2025 – 2029</span></div>
+          <div class="meta-row"><span class="meta-k">Based in</span><span class="meta-v">India</span></div>
+        </div>
+      </div>
+      <div class="about-right">
+        <p class="about-body" id="aboutBody">
+          I'm a Computer Science student deeply passionate about building beautiful, performant web interfaces. My craft sits at the intersection of design and engineering — I care about the pixel and the function equally.
+        </p>
+        <p class="about-body about-body-2">
+          Currently exploring frontend systems, interactive 3D, and cybersecurity fundamentals. Looking for internship opportunities where I can push my skills and collaborate on ambitious products.
+        </p>
+        <a href="#contact" class="btn-text-arrow">
+          Work with me
+          <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ═══ -->
+  <section id="skills" class="plx-section">
+    <div class="skills-wrap">
+      <div class="plx-orb plx-orb-1"></div>
+      <div class="plx-orb plx-orb-2"></div>
+      <div class="tag reveal-tag">Skills</div>
+      <h2 class="section-title">My toolkit</h2>
+      <div class="skills-grid">
+
+        <div class="sk-card" data-depth="0.4">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M6 4l2.8 31.4L20 39l11.2-3.6L34 4H6z" fill="rgba(255,100,50,0.12)" stroke="rgba(255,100,50,0.55)" stroke-width="1"/><path d="M20 18h-6.5l-.4-4.5H20V9H9.5l1.1 12.5H20V18zm0 9.5-.02.005-4.83-1.3-.31-3.5h-4.5l.61 6.8 9.02 2.5.03-.005V27.5z" fill="rgba(255,120,60,0.85)"/></svg>
+          </div>
+          <div class="sk-name">HTML5</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:92%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.6">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M6 4l2.8 31.4L20 39l11.2-3.6L34 4H6z" fill="rgba(50,120,255,0.12)" stroke="rgba(50,120,255,0.55)" stroke-width="1"/><path d="M9.5 13.5H20V9H9.5l1.1 12.5H20V18h-6.5l-.4-4.5H20v-4.5H9.5zm10.5 14 9-2.5 1.2-13.5H20V18h6.5l-.4 4.5H20v5z" fill="rgba(80,140,255,0.85)"/></svg>
+          </div>
+          <div class="sk-name">CSS3</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:90%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.3">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="3" fill="rgba(240,200,0,0.1)" stroke="rgba(240,200,0,0.5)" stroke-width="1"/><path d="M22.5 27c0 2.5 1.5 3.5 3.5 3.5s3.5-1.2 3.5-3.5V18H26v8.5c0 1-.3 1.5-1 1.5s-1-.5-1-1.5H22.5zm-9 0c.3 1.5 1.5 3.5 4.5 3.5s4.5-2 4.5-4c0-2.5-1.5-3.5-4-4.5C16.5 21 16 20.5 16 19.5c0-.8.5-1.5 1.5-1.5s1.5.5 1.8 1.5l2.7-1C21.5 17 20 15.5 17.5 15.5s-4 1.5-4 4c0 2.5 1.5 3.5 4 4.5 1.5.5 2 1 2 2s-.7 1.5-1.7 1.5c-1.3 0-2-.8-2.3-2L13.5 27z" fill="rgba(240,210,0,0.9)"/></svg>
+          </div>
+          <div class="sk-name">JavaScript</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:85%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.55">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 4c-4.4 0-8 .9-8 4v3h8v1H10c-3 0-6 1.8-6 8s3 8 6 8h2v-4c0-3 2-5 5-5h6c2.5 0 4-2 4-5V8c0-2.5-2.5-4-5-4z" fill="rgba(70,130,200,0.12)" stroke="rgba(70,130,200,0.5)" stroke-width="0.8"/><path d="M20 36c4.4 0 8-.9 8-4v-3h-8v-1h10c3 0 6-1.8 6-8s-3-8-6-8h-2v4c0 3-2 5-5 5h-6c-2.5 0-4 2-4 5v7c0 2.5 2.5 4 5 4z" fill="rgba(255,200,50,0.12)" stroke="rgba(255,200,50,0.45)" stroke-width="0.8"/><circle cx="17.5" cy="10.5" r="1.5" fill="rgba(70,130,200,0.9)"/><circle cx="22.5" cy="29.5" r="1.5" fill="rgba(255,210,60,0.9)"/></svg>
+          </div>
+          <div class="sk-name">Python</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:80%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.7">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,32 4,32" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><polygon points="20,10 30,28 10,28" fill="rgba(180,150,255,0.08)" stroke="rgba(180,150,255,0.35)" stroke-width="0.8"/><polygon points="20,16 26,26 14,26" fill="rgba(180,150,255,0.18)"/></svg>
+          </div>
+          <div class="sk-name">Three.js</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:65%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.45">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="rgba(120,240,120,0.45)" stroke-width="1" fill="rgba(120,240,120,0.05)"/><path d="M12 20 Q16 10 20 20 Q24 30 28 20" stroke="rgba(120,240,120,0.9)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="20" r="2" fill="rgba(120,240,120,0.8)"/><circle cx="28" cy="20" r="2" fill="rgba(120,240,120,0.8)"/></svg>
+          </div>
+          <div class="sk-name">GSAP</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:72%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.35">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 4L8 9v10c0 7.5 5 14 12 16 7-2 12-8.5 12-16V9L20 4z" fill="rgba(255,80,120,0.08)" stroke="rgba(255,80,120,0.5)" stroke-width="1"/><path d="M14 20l4 4 8-8" stroke="rgba(255,100,130,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="sk-name">Cybersecurity</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:70%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.5">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="rgba(100,200,255,0.45)" stroke-width="1" fill="rgba(100,200,255,0.05)"/><path d="M24 14.5a8 8 0 1 0 0 11M16 18h3m-3 4h3" stroke="rgba(100,200,255,0.85)" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sk-name">C Programming</div>
+          <div class="sk-bar"><div class="sk-fill" style="--p:68%"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WORK ═══ -->
+  <section id="work" class="plx-section">
+    <div class="work-wrap">
+      <div class="plx-grid"></div>
+      <div class="work-header">
+        <div class="tag reveal-tag">Work</div>
+        <h2 class="section-title">Selected projects</h2>
+      </div>
+
+      <article class="project-row reveal-proj" id="proj1">
+        <div class="proj-num">01</div>
+        <div class="proj-info">
+          <h3 class="proj-title">Portfolio Website</h3>
+          <p class="proj-desc">A cinematic single-page portfolio built with Three.js particle effects, GSAP scroll choreography, and SplitType text reveals — designed to feel like an Apple product page.</p>
+          <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Three.js</span><span>GSAP</span></div>
+          <div class="proj-links">
+            <a href="#" class="plink">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8a6.5 6.5 0 0 0 4.44 6.17c.32.06.44-.14.44-.3v-.88c-1.8.39-2.18-.87-2.18-.87-.3-.75-.72-.95-.72-.95-.58-.4.04-.39.04-.39.65.04 1 .67 1 .67.58.99 1.52.7 1.89.54.06-.42.23-.7.41-.86-1.44-.16-2.95-.72-2.95-3.2 0-.7.25-1.28.67-1.73-.07-.17-.29-.82.06-1.7 0 0 .54-.17 1.78.66A6.2 6.2 0 0 1 8 5.57c.51 0 1.03.07 1.5.2 1.24-.84 1.78-.67 1.78-.67.35.9.13 1.54.06 1.7.42.45.67 1.02.67 1.73 0 2.49-1.52 3.04-2.96 3.2.23.2.44.59.44 1.2v1.77c0 .17.12.37.45.31A6.5 6.5 0 0 0 14.5 8c0-3.59-2.91-6.5-6.5-6.5z" fill="currentColor"/></svg>
+              GitHub
+            </a>
+            <a href="#" class="plink plink-live">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M6 3H3v10h10v-3M10 2h4v4M14 2l-7 7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Live
+            </a>
+          </div>
+        </div>
+        <div class="proj-preview">
+          <div class="preview-screen">
+            <div class="screen-dots"><i></i><i></i><i></i></div>
+            <div class="screen-art sa-browser">
+              <div class="sa-line sa-l1"></div>
+              <div class="sa-line sa-l2"></div>
+              <div class="sa-line sa-l3"></div>
+              <div class="sa-orb"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-row reveal-proj" id="proj2">
+        <div class="proj-num">02</div>
+        <div class="proj-info">
+          <h3 class="proj-title">Python Automation Scripts</h3>
+          <p class="proj-desc">OS-level automation toolkit — file management, system monitoring, and scheduling utilities. Clean, modular Python written for real-world usage.</p>
+          <div class="proj-tags"><span>Python</span><span>OS Module</span><span>Automation</span></div>
+          <div class="proj-links">
+            <a href="#" class="plink">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8a6.5 6.5 0 0 0 4.44 6.17c.32.06.44-.14.44-.3v-.88c-1.8.39-2.18-.87-2.18-.87-.3-.75-.72-.95-.72-.95-.58-.4.04-.39.04-.39.65.04 1 .67 1 .67.58.99 1.52.7 1.89.54.06-.42.23-.7.41-.86-1.44-.16-2.95-.72-2.95-3.2 0-.7.25-1.28.67-1.73-.07-.17-.29-.82.06-1.7 0 0 .54-.17 1.78.66A6.2 6.2 0 0 1 8 5.57c.51 0 1.03.07 1.5.2 1.24-.84 1.78-.67 1.78-.67.35.9.13 1.54.06 1.7.42.45.67 1.02.67 1.73 0 2.49-1.52 3.04-2.96 3.2.23.2.44.59.44 1.2v1.77c0 .17.12.37.45.31A6.5 6.5 0 0 0 14.5 8c0-3.59-2.91-6.5-6.5-6.5z" fill="currentColor"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proj-preview">
+          <div class="preview-screen preview-terminal">
+            <div class="screen-dots"><i></i><i></i><i></i></div>
+            <div class="terminal-art">
+              <span class="t-prompt">$</span>&nbsp;<span class="t-cmd">python automate.py</span><br>
+              <span class="t-out">→ Scanning files...</span><br>
+              <span class="t-out">→ 42 tasks complete</span><br>
+              <span class="t-cur">▌</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-row reveal-proj" id="proj3">
+        <div class="proj-num">03</div>
+        <div class="proj-info">
+          <h3 class="proj-title">Network Security Scanner</h3>
+          <p class="proj-desc">Python tool that scans local networks for open ports and surface-level vulnerabilities. Built to understand penetration testing and network reconnaissance fundamentals.</p>
+          <div class="proj-tags"><span>Python</span><span>Networking</span><span>Security</span></div>
+          <div class="proj-links">
+            <a href="#" class="plink">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5C4.41 1.5 1.5 4.41 1.5 8a6.5 6.5 0 0 0 4.44 6.17c.32.06.44-.14.44-.3v-.88c-1.8.39-2.18-.87-2.18-.87-.3-.75-.72-.95-.72-.95-.58-.4.04-.39.04-.39.65.04 1 .67 1 .67.58.99 1.52.7 1.89.54.06-.42.23-.7.41-.86-1.44-.16-2.95-.72-2.95-3.2 0-.7.25-1.28.67-1.73-.07-.17-.29-.82.06-1.7 0 0 .54-.17 1.78.66A6.2 6.2 0 0 1 8 5.57c.51 0 1.03.07 1.5.2 1.24-.84 1.78-.67 1.78-.67.35.9.13 1.54.06 1.7.42.45.67 1.02.67 1.73 0 2.49-1.52 3.04-2.96 3.2.23.2.44.59.44 1.2v1.77c0 .17.12.37.45.31A6.5 6.5 0 0 0 14.5 8c0-3.59-2.91-6.5-6.5-6.5z" fill="currentColor"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="proj-preview">
+          <div class="preview-screen">
+            <div class="screen-dots"><i></i><i></i><i></i></div>
+            <div class="screen-art" style="display:flex;align-items:center;justify-content:center;">
+              <svg viewBox="0 0 80 80" fill="none" width="80" height="80">
+                <path d="M40 8L16 18v18c0 15 10 28 24 32 14-4 24-17 24-32V18L40 8z" stroke="rgba(255,80,120,0.4)" stroke-width="1.5" fill="rgba(255,80,120,0.05)"/>
+                <path d="M30 40l8 8 16-16" stroke="rgba(255,100,130,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══ CERTS ═══ -->
+  <section id="certs">
+    <div class="certs-wrap">
+      <div class="tag reveal-tag">Credentials</div>
+      <h2 class="section-title">Certifications</h2>
+      <div class="certs-grid">
+
+        <div class="cert-card reveal-up">
+          <div class="cert-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 2L4 7v10c0 7.5 5 14 12 15 7-1 12-7.5 12-15V7L16 2z" stroke="rgba(255,80,120,0.6)" stroke-width="1" fill="rgba(255,80,120,0.08)"/><path d="M11 16l4 4 7-7" stroke="rgba(255,100,130,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Cyber Security</div>
+            <div class="cert-issuer">Certification</div>
+          </div>
+          <div class="cert-badge"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="rgba(255,200,50,0.5)" stroke-width="1"/><path d="M7 10l2.5 2.5L13 8" stroke="rgba(255,200,50,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div class="cert-card reveal-up">
+          <div class="cert-icon">
+            <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="10" stroke="rgba(50,180,255,0.5)" stroke-width="1" fill="rgba(50,180,255,0.06)"/><circle cx="16" cy="16" r="3" fill="rgba(50,180,255,0.3)"/><path d="M7 16h3M22 16h3M16 7v3M16 22v3" stroke="rgba(50,180,255,0.6)" stroke-width="1" stroke-linecap="round"/></svg>
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Intro to Networking</div>
+            <div class="cert-issuer">Certification</div>
+          </div>
+          <div class="cert-badge"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="rgba(255,200,50,0.5)" stroke-width="1"/><path d="M7 10l2.5 2.5L13 8" stroke="rgba(255,200,50,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div class="cert-card reveal-up">
+          <div class="cert-icon">
+            <svg viewBox="0 0 32 32" fill="none"><path d="M16 4c-4.4 0-7 .9-7 3.5v3h7v.8H9c-2.5 0-5 1.6-5 7s2.5 7 5 7h2v-3.5c0-2.5 1.8-4.3 4.3-4.3h5.3c2.2 0 3.4-1.7 3.4-4.3V7.5c0-2-2-3.5-5-3.5z" fill="rgba(70,130,200,0.12)" stroke="rgba(70,130,200,0.5)" stroke-width="0.8"/><path d="M16 28c4.4 0 7-.9 7-3.5v-3h-7v-.8H26c2.5 0 5-1.6 5-7s-2.5-7-5-7h-2v3.5c0 2.5-1.8 4.3-4.3 4.3H9.4C7.2 14.5 6 16.2 6 18.8v4.7c0 2 2 3.5 5 3.5h5z" fill="rgba(255,200,50,0.1)" stroke="rgba(255,200,50,0.45)" stroke-width="0.8"/></svg>
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Crash Course on Python</div>
+            <div class="cert-issuer">Certification</div>
+          </div>
+          <div class="cert-badge"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="rgba(255,200,50,0.5)" stroke-width="1"/><path d="M7 10l2.5 2.5L13 8" stroke="rgba(255,200,50,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div class="cert-card reveal-up">
+          <div class="cert-icon">
+            <svg viewBox="0 0 32 32" fill="none"><rect x="4" y="6" width="24" height="18" rx="2" stroke="rgba(120,240,120,0.5)" stroke-width="1" fill="rgba(120,240,120,0.06)"/><path d="M10 14l3 3-3 3M17 20h5" stroke="rgba(140,255,140,0.8)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Python &amp; OS Systems</div>
+            <div class="cert-issuer">Certification</div>
+          </div>
+          <div class="cert-badge"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="rgba(255,200,50,0.5)" stroke-width="1"/><path d="M7 10l2.5 2.5L13 8" stroke="rgba(255,200,50,0.9)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section id="contact">
+    <div class="contact-wrap">
+      <div class="tag reveal-tag">Contact</div>
+      <h2 class="contact-title" id="contactTitle">
+        Ready to build<br><em>something great</em><br>together?
+      </h2>
+      <div class="contact-row">
+        <div class="contact-left">
+          <p class="contact-sub">Open to frontend internships, freelance projects, and interesting collaborations. Let's make something memorable.</p>
+          <div class="contact-socials">
+            <a href="/cdn-cgi/l/email-protection#b8cbd9ccc1d9d5f8ddc0d9d5c8d4dd96dbd7d5" class="social-link">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1"/><path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+              <span class="__cf_email__" data-cfemail="e093819499818da08598818d908c85ce838f8d">[email&#160;protected]</span>
+            </a>
+            <a href="https://github.com/satyamkumar" target="_blank" class="social-link">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.85 2 2.5 5.35 2.5 9.5c0 3.31 2.15 6.12 5.12 7.12.38.07.52-.16.52-.36V14.9c-2.09.45-2.52-1-2.52-1-.34-.87-.83-1.1-.83-1.1-.68-.47.05-.45.05-.45.75.05 1.15.77 1.15.77.67 1.15 1.76.82 2.19.63.07-.49.26-.82.47-1C6.67 13.6 4.98 13 4.98 10.2c0-.82.29-1.49.77-2-.08-.2-.34-.97.07-2 0 0 .63-.2 2.06.77A7.15 7.15 0 0 1 10 6.44c.64.003 1.28.086 1.88.25 1.43-.97 2.05-.77 2.05-.77.42 1.03.16 1.8.08 2 .48.51.77 1.18.77 2 0 2.81-1.7 3.43-3.32 3.61.26.22.5.67.5 1.35v2.01c0 .2.14.44.52.36A7.516 7.516 0 0 0 17.5 9.5C17.5 5.35 14.15 2 10 2z" fill="currentColor"/></svg>
+              github.com/satyamkumar
+            </a>
+            <a href="https://linkedin.com/in/satyamkumar" target="_blank" class="social-link">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1"/><path d="M6 8.5v5M6 6v.5M10 13.5V11a2 2 0 0 1 4 0v2.5M10 8.5v5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+              linkedin.com/in/satyamkumar
+            </a>
+          </div>
+        </div>
+        <div class="contact-right">
+          <a href="/cdn-cgi/l/email-protection#2f5c4e5b564e426f4a574e425f434a014c4042" class="mega-btn magnetic" data-mag>
+            <span>Say hello</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id="footer">
+    <div class="footer-wrap">
+      <div class="footer-left">
+        <span class="footer-sig">Satyam Kumar</span>
+        <span class="footer-role">Frontend Developer</span>
+      </div>
+      <div class="footer-copy">© 2025 — Designed &amp; built by Satyam Kumar</div>
+      <div class="footer-right">
+        <a href="https://github.com/satyamkumar" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/satyamkumar" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
