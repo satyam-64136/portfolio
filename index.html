@@ -793,8 +793,15 @@ body.menu-open .mobile-menu {
   display: grid;
   grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
+  align-items: stretch;
 }
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.about-meta { margin-top: auto; }
 
 .about-portrait {
   position: relative;
@@ -863,6 +870,20 @@ body.menu-open .mobile-menu {
   font-size: clamp(0.9rem, 1.6vw, 1.2rem);
 }
 
+/* Scroll-fill gradient effect for #aboutBody lines (SplitType "lines")
+   Each line starts mostly dim and "fills" with the bright text colour
+   left-to-right as it scrolls through the viewport — direct port of
+   the .about-animated-text reference effect. */
+#aboutBody .line {
+  display: block;
+  background: linear-gradient(to right, var(--text) 50%, var(--dim) 50%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    SKILLS
 ═══════════════════════════════════════════════════════════════ */
@@ -929,29 +950,11 @@ body.menu-open .mobile-menu {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 0.75rem;
   /* prevent long names overflowing */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.sk-bar {
-  height: 2px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.sk-fill {
-  height: 100%;
-  width: var(--p, 70%);
-  background: linear-gradient(90deg, var(--accent), var(--teal));
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.85s var(--ease);
-}
-.sk-card.animated .sk-fill { transform: scaleX(1); }
-
 .sk-card:nth-child(odd)  .sk-icon { animation: skF1 5s ease-in-out infinite; }
 .sk-card:nth-child(even) .sk-icon { animation: skF2 6.5s ease-in-out infinite; }
 @keyframes skF1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
@@ -1409,6 +1412,7 @@ body.menu-open .mobile-menu {
   .nav-inner { padding: 0.4rem; gap: 0.4rem; }
   .nav-cta { display: none; }
   .nav-toggle { display: flex; }
+  .nav-actions { margin-left: auto; }
   .hero-scroll-hint { display: none; }
 
   /* Hero vertically centred on small screens */
@@ -1644,7 +1648,6 @@ body.menu-open .mobile-menu {
             <svg viewBox="0 0 40 40" fill="none"><path d="M6 4l2.8 31.4L20 39l11.2-3.6L34 4H6z" fill="rgba(255,100,50,0.12)" stroke="rgba(255,100,50,0.55)" stroke-width="1"/><path d="M20 18h-6.5l-.4-4.5H20V9H9.5l1.1 12.5H20V18zm0 9.5-.02.005-4.83-1.3-.31-3.5h-4.5l.61 6.8 9.02 2.5.03-.005V27.5z" fill="rgba(255,120,60,0.85)"/></svg>
           </div>
           <div class="sk-name">HTML5</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:92%"></div></div>
         </div>
 
         <div class="sk-card" data-depth="0.6">
@@ -1652,7 +1655,6 @@ body.menu-open .mobile-menu {
             <svg viewBox="0 0 40 40" fill="none"><path d="M6 4l2.8 31.4L20 39l11.2-3.6L34 4H6z" fill="rgba(50,120,255,0.12)" stroke="rgba(50,120,255,0.55)" stroke-width="1"/><path d="M9.5 13.5H20V9H9.5l1.1 12.5H20V18h-6.5l-.4-4.5H20v-4.5H9.5zm10.5 14 9-2.5 1.2-13.5H20V18h6.5l-.4 4.5H20v5z" fill="rgba(80,140,255,0.85)"/></svg>
           </div>
           <div class="sk-name">CSS3</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:90%"></div></div>
         </div>
 
         <div class="sk-card" data-depth="0.3">
@@ -1660,7 +1662,6 @@ body.menu-open .mobile-menu {
             <svg viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="3" fill="rgba(240,200,0,0.1)" stroke="rgba(240,200,0,0.5)" stroke-width="1"/><path d="M22.5 27c0 2.5 1.5 3.5 3.5 3.5s3.5-1.2 3.5-3.5V18H26v8.5c0 1-.3 1.5-1 1.5s-1-.5-1-1.5H22.5zm-9 0c.3 1.5 1.5 3.5 4.5 3.5s4.5-2 4.5-4c0-2.5-1.5-3.5-4-4.5C16.5 21 16 20.5 16 19.5c0-.8.5-1.5 1.5-1.5s1.5.5 1.8 1.5l2.7-1C21.5 17 20 15.5 17.5 15.5s-4 1.5-4 4c0 2.5 1.5 3.5 4 4.5 1.5.5 2 1 2 2s-.7 1.5-1.7 1.5c-1.3 0-2-.8-2.3-2L13.5 27z" fill="rgba(240,210,0,0.9)"/></svg>
           </div>
           <div class="sk-name">JavaScript</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:85%"></div></div>
         </div>
 
         <div class="sk-card" data-depth="0.55">
@@ -1668,7 +1669,27 @@ body.menu-open .mobile-menu {
             <svg viewBox="0 0 40 40" fill="none"><path d="M20 4c-4.4 0-8 .9-8 4v3h8v1H10c-3 0-6 1.8-6 8s3 8 6 8h2v-4c0-3 2-5 5-5h6c2.5 0 4-2 4-5V8c0-2.5-2.5-4-5-4z" fill="rgba(70,130,200,0.12)" stroke="rgba(70,130,200,0.5)" stroke-width="0.8"/><path d="M20 36c4.4 0 8-.9 8-4v-3h-8v-1h10c3 0 6-1.8 6-8s-3-8-6-8h-2v4c0 3-2 5-5 5h-6c-2.5 0-4 2-4 5v7c0 2.5 2.5 4 5 4z" fill="rgba(255,200,50,0.12)" stroke="rgba(255,200,50,0.45)" stroke-width="0.8"/><circle cx="17.5" cy="10.5" r="1.5" fill="rgba(70,130,200,0.9)"/><circle cx="22.5" cy="29.5" r="1.5" fill="rgba(255,210,60,0.9)"/></svg>
           </div>
           <div class="sk-name">Python</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:80%"></div></div>
+        </div>
+
+        <div class="sk-card" data-depth="0.65">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 3 7 9v8c0 9 5.5 16.5 13 19 7.5-2.5 13-10 13-19V9L20 3z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><path d="M14 18c0-3.3 2.7-6 6-6s6 2.7 6 6-2.7 6-6 6c-1.3 0-2.5-.4-3.5-1.1" stroke="rgba(255,255,255,0.7)" stroke-width="1.3" stroke-linecap="round" fill="none"/><circle cx="20" cy="18" r="1.6" fill="rgba(255,255,255,0.85)"/></svg>
+          </div>
+          <div class="sk-name">Flask</div>
+        </div>
+
+        <div class="sk-card" data-depth="0.5">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><ellipse cx="20" cy="10" rx="14" ry="5" fill="rgba(100,200,255,0.08)" stroke="rgba(100,200,255,0.5)" stroke-width="1"/><path d="M6 10v20c0 2.8 6.3 5 14 5s14-2.2 14-5V10" stroke="rgba(100,200,255,0.5)" stroke-width="1" fill="none"/><path d="M6 18c0 2.8 6.3 5 14 5s14-2.2 14-5" stroke="rgba(100,200,255,0.35)" stroke-width="1" fill="none"/></svg>
+          </div>
+          <div class="sk-name">SQL</div>
+        </div>
+
+        <div class="sk-card" data-depth="0.45">
+          <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" fill="rgba(255,100,80,0.05)" stroke="rgba(255,100,80,0.5)" stroke-width="1"/><circle cx="20" cy="10" r="2.5" fill="rgba(255,120,90,0.85)"/><circle cx="13" cy="27" r="2.5" fill="rgba(255,120,90,0.85)"/><circle cx="27" cy="27" r="2.5" fill="rgba(255,120,90,0.85)"/><path d="M20 12.5V18M20 18l-7 7M20 18l7 7" stroke="rgba(255,140,110,0.7)" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="sk-name">Git &amp; GitHub</div>
         </div>
 
         <div class="sk-card" data-depth="0.7">
@@ -1676,31 +1697,34 @@ body.menu-open .mobile-menu {
             <svg viewBox="0 0 40 40" fill="none"><polygon points="20,4 36,32 4,32" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><polygon points="20,10 30,28 10,28" fill="rgba(180,150,255,0.08)" stroke="rgba(180,150,255,0.35)" stroke-width="0.8"/><polygon points="20,16 26,26 14,26" fill="rgba(180,150,255,0.18)"/></svg>
           </div>
           <div class="sk-name">Three.js</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:65%"></div></div>
         </div>
 
-        <div class="sk-card" data-depth="0.45">
+        <div class="sk-card" data-depth="0.4">
           <div class="sk-icon">
             <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="15" stroke="rgba(120,240,120,0.45)" stroke-width="1" fill="rgba(120,240,120,0.05)"/><path d="M12 20 Q16 10 20 20 Q24 30 28 20" stroke="rgba(120,240,120,0.9)" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="12" cy="20" r="2" fill="rgba(120,240,120,0.8)"/><circle cx="28" cy="20" r="2" fill="rgba(120,240,120,0.8)"/></svg>
           </div>
           <div class="sk-name">GSAP</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:72%"></div></div>
         </div>
 
-        <div class="sk-card" data-depth="0.35">
+        <div class="sk-card" data-depth="0.6">
           <div class="sk-icon">
-            <svg viewBox="0 0 40 40" fill="none"><path d="M20 4L8 9v10c0 7.5 5 14 12 16 7-2 12-8.5 12-16V9L20 4z" fill="rgba(255,80,120,0.08)" stroke="rgba(255,80,120,0.5)" stroke-width="1"/><path d="M14 20l4 4 8-8" stroke="rgba(255,100,130,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 40 40" fill="none"><rect x="6" y="6" width="28" height="28" rx="3" fill="rgba(180,60,200,0.06)" stroke="rgba(200,100,220,0.5)" stroke-width="1"/><circle cx="14" cy="14" r="2" fill="rgba(220,140,240,0.8)"/><circle cx="26" cy="14" r="2" fill="rgba(220,140,240,0.8)"/><circle cx="14" cy="26" r="2" fill="rgba(220,140,240,0.8)"/><circle cx="26" cy="26" r="2" fill="rgba(220,140,240,0.8)"/><path d="M14 16v8M26 16v8M16 14h8M16 26h8" stroke="rgba(220,140,240,0.4)" stroke-width="0.8"/></svg>
           </div>
-          <div class="sk-name">Cybersecurity</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:70%"></div></div>
+          <div class="sk-name">Raspberry Pi</div>
         </div>
 
         <div class="sk-card" data-depth="0.5">
           <div class="sk-icon">
+            <svg viewBox="0 0 40 40" fill="none"><rect x="10" y="10" width="20" height="20" rx="2" fill="rgba(255,160,40,0.06)" stroke="rgba(255,170,60,0.5)" stroke-width="1"/><path d="M14 4v4M20 4v4M26 4v4M14 32v4M20 32v4M26 32v4M4 14h4M4 20h4M4 26h4M32 14h4M32 20h4M32 26h4" stroke="rgba(255,180,80,0.5)" stroke-width="1" stroke-linecap="round"/><circle cx="20" cy="20" r="3" fill="rgba(255,190,90,0.8)"/></svg>
+          </div>
+          <div class="sk-name">ESP32</div>
+        </div>
+
+        <div class="sk-card" data-depth="0.55">
+          <div class="sk-icon">
             <svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="rgba(100,200,255,0.45)" stroke-width="1" fill="rgba(100,200,255,0.05)"/><path d="M24 14.5a8 8 0 1 0 0 11M16 18h3m-3 4h3" stroke="rgba(100,200,255,0.85)" stroke-width="1.5" stroke-linecap="round"/></svg>
           </div>
-          <div class="sk-name">C Programming</div>
-          <div class="sk-bar"><div class="sk-fill" style="--p:68%"></div></div>
+          <div class="sk-name">Microcontrollers (C)</div>
         </div>
 
       </div>
@@ -1962,14 +1986,6 @@ body.menu-open .mobile-menu {
     document.body.classList.remove('loading');
     return;
   }
-
-  /* Skip the full animation on repeat visits within the same session */
-  if (sessionStorage.getItem('introPlayed') === '1') {
-    loader.classList.add('is-hidden');
-    document.body.classList.remove('loading');
-    return;
-  }
-  sessionStorage.setItem('introPlayed', '1');
 
   const texts = ['Hello', 'Namaste', 'Welcome', 'Satyam'];
   const morphTime = 1;       // seconds per morph
@@ -2528,21 +2544,27 @@ setTimeout(function setupSplitType() {
     return el.querySelectorAll('.line > span');
   }
 
-  /* ── 1. About body — word cascade ── */
+  /* ── 1. About body — line-by-line gradient scroll-fill ──
+     Matches the reference .about-animated-text effect: split
+     into lines, each line gets a two-tone gradient text-clip
+     (bright → dim) and GSAP scrubs backgroundPositionX from
+     100% to 0% as that specific line crosses the viewport,
+     so each line "fills in" with brightness one at a time
+     as you scroll — smoother than a word-by-word cascade. */
   const aboutEl = document.getElementById('aboutBody');
   if (aboutEl) {
-    const spans = maskWords(aboutEl);
-    gsap.to(spans, {
-      y: '0%',
-      opacity: 1,
-      duration: 0.78,
-      stagger: 0.015,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: aboutEl,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
+    const st = new SplitType(aboutEl, { types: 'lines', tagName: 'span' });
+    st.lines.forEach(line => {
+      gsap.to(line, {
+        backgroundPositionX: '0%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: line,
+          start: 'top 90%',
+          end: 'top 35%',
+          scrub: true,
+        },
+      });
     });
   }
 
@@ -2626,7 +2648,7 @@ setTimeout(function setupSplitType() {
 
 
 /* ═══════════════════════════════════════════════════
-   H. SKILLS — STAGGER + PARALLAX DEPTH + BAR FILL
+   H. SKILLS — STAGGER + PARALLAX DEPTH
 ═══════════════════════════════════════════════════ */
 (function skillsReveal() {
   const cards = document.querySelectorAll('.sk-card');
@@ -2642,8 +2664,6 @@ setTimeout(function setupSplitType() {
       trigger: '#skills',
       start: 'top 72%',
       toggleActions: 'play none none reverse',
-      onEnter: () => cards.forEach(c => c.classList.add('animated')),
-      onLeaveBack: () => cards.forEach(c => c.classList.remove('animated')),
     },
   });
 
