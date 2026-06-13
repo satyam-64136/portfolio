@@ -69,6 +69,25 @@ body {
 a  { color: inherit; text-decoration: none; }
 em { font-style: italic; }
 
+/* ═══════════════════════════════════════════════════════════════
+   AMBIENT BACKGROUND LAYER — shared across all sections
+   A single fixed gradient that drifts slowly and is shared by
+   the whole page (Law of Common Region / Uniform Connectedness),
+   so sections feel like one continuous space rather than a
+   stack of separate cards. Individual section ::before glows
+   sit on top of this and blend with it.
+═══════════════════════════════════════════════════════════════ */
+#ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% var(--ambient-y, 0%), rgba(184,169,255,0.05), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 50% calc(var(--ambient-y, 0%) + 60%), rgba(41,217,194,0.04), transparent 70%);
+  transition: background 0.6s linear;
+}
+
 /* Grain texture overlay */
 body::after {
   content: '';
@@ -785,9 +804,24 @@ body.menu-open .mobile-menu {
 /* ═══════════════════════════════════════════════════════════════
    ABOUT
 ═══════════════════════════════════════════════════════════════ */
-#about { padding: 12vh var(--pad-x) 9vh; }
+#about {
+  padding: 12vh var(--pad-x) 9vh;
+  position: relative;
+  overflow: hidden;
+}
+/* bridges hero's orb (top-right) toward skills' orbs (bottom-right) —
+   keeps the lavender/teal field continuous through this section */
+#about::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 88% 8%, rgba(184,169,255,0.05), transparent 65%),
+    radial-gradient(ellipse 45% 50% at 10% 95%, rgba(41,217,194,0.04), transparent 65%);
+  pointer-events: none;
+}
 
 .about-wrap {
+  position: relative;
   max-width: var(--max-w);
   margin: 0 auto;
   display: grid;
@@ -1001,7 +1035,15 @@ body.menu-open .mobile-menu {
 ═══════════════════════════════════════════════════════════════ */
 #work {
   padding: 11vh var(--pad-x);
-  border-top: 1px solid var(--border);
+  position: relative;
+}
+/* soft gradient bridge instead of a hard border seam */
+#work::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 50%, transparent);
 }
 .work-wrap { max-width: var(--max-w); margin: 0 auto; }
 .work-header { margin-bottom: 0.25rem; }
@@ -1146,9 +1188,19 @@ body.menu-open .mobile-menu {
 #certs {
   padding: 11vh var(--pad-x);
   background: var(--surface);
-  border-top: 1px solid var(--border);
+  position: relative;
 }
-.certs-wrap { max-width: var(--max-w); margin: 0 auto; }
+/* soft gradient bridge instead of a hard border seam, plus a
+   subtle top-fade so .surface blends into the section above
+   rather than cutting sharply */
+#certs::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 50%, transparent);
+}
+.certs-wrap { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; }
 .certs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -1244,7 +1296,7 @@ body.menu-open .mobile-menu {
   max-width: 380px;
   margin-bottom: 2.2rem;
 }
-.contact-socials { display: flex; flex-direction: column; gap: 0.9rem; }
+.contact-socials { display: flex; flex-direction: column; gap: 0.4rem; }
 .social-link {
   display: inline-flex;
   align-items: center;
@@ -1258,6 +1310,8 @@ body.menu-open .mobile-menu {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  /* larger tap target without affecting visual rhythm much (Fitts's Law) */
+  padding: 0.5rem 0;
 }
 .social-link svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.55; }
 .social-link:hover { color: var(--teal); }
@@ -1303,39 +1357,61 @@ body.menu-open .mobile-menu {
 ═══════════════════════════════════════════════════════════════ */
 #footer {
   border-top: 1px solid var(--border);
-  padding: 1.6rem var(--pad-x);
+  padding: clamp(4.5rem, 13vw, 9rem) var(--pad-x) clamp(2.5rem, 6vw, 3.5rem);
   background: var(--surface);
+  overflow: hidden;
 }
 .footer-wrap {
   max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 3.5rem);
+}
+
+/* Giant wordmark — the centerpiece */
+.footer-mark {
+  font-family: var(--f-disp);
+  font-size: clamp(4.5rem, 16vw, 11rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--text);
+  background: linear-gradient(110deg, var(--text) 30%, var(--accent) 60%, var(--teal) 100%);
+  background-size: 200% 100%;
+  background-position-x: 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position-x 0.7s var(--ease);
+}
+.footer-mark:hover { background-position-x: 0%; }
+
+/* Quiet bottom row */
+.footer-bottom {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 1rem;
+  width: 100%;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid var(--border);
 }
-.footer-left { display: flex; flex-direction: column; gap: 0.12rem; }
-.footer-sig {
-  font-family: var(--f-disp);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-}
-.footer-role {
+.footer-copy {
   font-family: var(--f-mono);
-  font-size: 0.58rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+.footer-right { display: flex; gap: 1.6rem; }
+.footer-right a {
+  font-size: 0.66rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--dim);
-}
-.footer-copy { font-size: 0.68rem; color: var(--dim); }
-.footer-right { display: flex; gap: 1.4rem; }
-.footer-right a {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--dim);
+  color: var(--muted);
   transition: color 0.2s;
 }
 .footer-right a:hover { color: var(--teal); }
@@ -1429,7 +1505,7 @@ body.menu-open .mobile-menu {
 
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .certs-grid  { grid-template-columns: 1fr; }
-  .footer-wrap { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
 
   /* Project cards: stack links/tags cleanly, ensure no overflow */
   .project-row { padding: 2.2rem 0; }
@@ -1459,6 +1535,9 @@ body.menu-open .mobile-menu {
 </head>
 <body class="loading">
 
+  <div id="ambient-bg"></div>
+
+
   <!-- ── Preloader: gooey text morph ── -->
   <div id="loader">
     <div class="loader-orb loader-orb-1"></div>
@@ -1480,7 +1559,7 @@ body.menu-open .mobile-menu {
         <span id="gooText2" class="goo-text"></span>
       </div>
       <div class="loader-progress"><div class="loader-progress-fill" id="loaderFill"></div></div>
-      <span class="loader-label">Loading portfolio</span>
+      <span class="loader-label">Loading portfolio · tap to skip</span>
     </div>
   </div>
 
@@ -1579,20 +1658,24 @@ body.menu-open .mobile-menu {
       <span>CSS</span><span class="sep">·</span>
       <span>JavaScript</span><span class="sep">·</span>
       <span>Python</span><span class="sep">·</span>
+      <span>Flask</span><span class="sep">·</span>
+      <span>SQL</span><span class="sep">·</span>
       <span>Three.js</span><span class="sep">·</span>
       <span>GSAP</span><span class="sep">·</span>
-      <span>Cybersecurity</span><span class="sep">·</span>
-      <span>Networking</span><span class="sep">·</span>
-      <span>C Programming</span><span class="sep">·</span>
+      <span>Git &amp; GitHub</span><span class="sep">·</span>
+      <span>ESP32</span><span class="sep">·</span>
+      <span>Raspberry Pi</span><span class="sep">·</span>
       <span>HTML</span><span class="sep">·</span>
       <span>CSS</span><span class="sep">·</span>
       <span>JavaScript</span><span class="sep">·</span>
       <span>Python</span><span class="sep">·</span>
+      <span>Flask</span><span class="sep">·</span>
+      <span>SQL</span><span class="sep">·</span>
       <span>Three.js</span><span class="sep">·</span>
       <span>GSAP</span><span class="sep">·</span>
-      <span>Cybersecurity</span><span class="sep">·</span>
-      <span>Networking</span><span class="sep">·</span>
-      <span>C Programming</span><span class="sep">·</span>
+      <span>Git &amp; GitHub</span><span class="sep">·</span>
+      <span>ESP32</span><span class="sep">·</span>
+      <span>Raspberry Pi</span><span class="sep">·</span>
     </div>
   </div>
 
@@ -1621,10 +1704,10 @@ body.menu-open .mobile-menu {
       </div>
       <div class="about-right">
         <p class="about-body" id="aboutBody">
-          I'm a Computer Science student deeply passionate about building beautiful, performant web interfaces. My craft sits at the intersection of design and engineering, and I care about the pixel and the function equally.
+          I'm a Computer Science student deeply passionate about building beautiful, performant web interfaces. My craft sits at the intersection of design and engineering, and I care about the pixel and the function equally. Whether it's choreographing a scroll animation or wiring up a backend, I enjoy the process of taking an idea from a rough sketch to something people can actually use.
         </p>
         <p class="about-body about-body-2">
-          Currently exploring frontend systems, interactive 3D, and cybersecurity fundamentals. Looking for internship opportunities where I can push my skills and collaborate on ambitious products.
+          Currently exploring frontend systems, interactive 3D, and embedded development with microcontrollers like the ESP32 and Raspberry Pi. I like building things end to end, from real-time chat apps and campus tools to dashboards and small hardware projects, and I'm always looking for ways to make software feel more thoughtful and alive. Looking for internship opportunities where I can push my skills and collaborate on ambitious products.
         </p>
         <a href="#contact" class="btn-text-arrow">
           Work with me
@@ -1897,7 +1980,7 @@ body.menu-open .mobile-menu {
             </a>
             <a href="https://github.com/satyam-64136/" target="_blank" class="social-link">
               <svg viewBox="0 0 20 20" fill="none"><path d="M10 2C5.85 2 2.5 5.35 2.5 9.5c0 3.31 2.15 6.12 5.12 7.12.38.07.52-.16.52-.36V14.9c-2.09.45-2.52-1-2.52-1-.34-.87-.83-1.1-.83-1.1-.68-.47.05-.45.05-.45.75.05 1.15.77 1.15.77.67 1.15 1.76.82 2.19.63.07-.49.26-.82.47-1C6.67 13.6 4.98 13 4.98 10.2c0-.82.29-1.49.77-2-.08-.2-.34-.97.07-2 0 0 .63-.2 2.06.77A7.15 7.15 0 0 1 10 6.44c.64.003 1.28.086 1.88.25 1.43-.97 2.05-.77 2.05-.77.42 1.03.16 1.8.08 2 .48.51.77 1.18.77 2 0 2.81-1.7 3.43-3.32 3.61.26.22.5.67.5 1.35v2.01c0 .2.14.44.52.36A7.516 7.516 0 0 0 17.5 9.5C17.5 5.35 14.15 2 10 2z" fill="currentColor"/></svg>
-              github.com/satyamkumar
+              github.com/satyam-64136
             </a>
             <a href="https://www.linkedin.com/in/satyam-kumar-28a366318/" target="_blank" class="social-link">
               <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1"/><path d="M6 8.5v5M6 6v.5M10 13.5V11a2 2 0 0 1 4 0v2.5M10 8.5v5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
@@ -1910,10 +1993,6 @@ body.menu-open .mobile-menu {
             <span>Say hello</span>
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="https://wa.me/919162591726?text=Hi%20Satyam%2C%20I%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect!" target="_blank" class="whatsapp-link">
-            <svg viewBox="0 0 20 20" fill="none" width="18" height="18"><path d="M10 2C5.58 2 2 5.58 2 10c0 1.54.42 2.98 1.15 4.22L2 18l3.9-1.12A7.93 7.93 0 0 0 10 18c4.42 0 8-3.58 8-8s-3.58-8-8-8zm3.9 11.1c-.17.47-1 .9-1.37.95-.34.05-.77.07-1.24-.08a11.3 11.3 0 0 1-1.13-.42C8.5 12.9 7.3 11.4 7.18 11.24c-.12-.16-.97-1.3-.97-2.47 0-1.18.61-1.76.83-2 .22-.24.48-.3.64-.3h.46c.15 0 .35-.06.55.42l.7 1.72c.06.14.1.3.02.48-.08.18-.12.3-.24.45-.12.15-.25.34-.36.46-.12.12-.24.25-.1.5.14.24.62.99 1.33 1.6.91.8 1.68 1.05 1.92 1.16.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.57-.11 1.04z" fill="rgba(37,211,102,0.9)"/></svg>
-            or message on WhatsApp
-          </a>
         </div>
       </div>
     </div>
@@ -1922,14 +2001,13 @@ body.menu-open .mobile-menu {
   <!-- ═══ FOOTER ═══ -->
   <footer id="footer">
     <div class="footer-wrap">
-      <div class="footer-left">
-        <span class="footer-sig">Satyam Kumar</span>
-        <span class="footer-role">Frontend Developer</span>
-      </div>
-      <div class="footer-copy">© 2025 Satyam Kumar. Designed &amp; built from scratch.</div>
-      <div class="footer-right">
-        <a href="https://github.com/satyam-64136/" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/satyam-kumar-28a366318/" target="_blank">LinkedIn</a>
+      <a href="#hero" class="footer-mark">Satyam Kumar</a>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025</span>
+        <div class="footer-right">
+          <a href="https://github.com/satyam-64136/" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/satyam-kumar-28a366318/" target="_blank">LinkedIn</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -2051,11 +2129,20 @@ body.menu-open .mobile-menu {
   animate();
 
   /* Hide loader after ~3s, then stop the RAF loop */
-  setTimeout(() => {
+  const hideLoader = () => {
     loader.classList.add('is-hidden');
     document.body.classList.remove('loading');
     setTimeout(() => cancelAnimationFrame(rafId), 700);
-  }, 3000);
+  };
+  const timer = setTimeout(hideLoader, 3000);
+
+  /* Let impatient users skip the intro with a click/tap
+     (Postel's Law — be forgiving of user intent) */
+  loader.style.cursor = 'pointer';
+  loader.addEventListener('click', () => {
+    clearTimeout(timer);
+    hideLoader();
+  });
 })();
 
 
@@ -2198,6 +2285,26 @@ if (typeof ScrollTrigger !== 'undefined') {
 
 
 /* ═══════════════════════════════════════════════════
+   D2. AMBIENT BACKGROUND DRIFT
+   Drives --ambient-y (0%–100%) from overall page scroll
+   progress, so the fixed gradient backdrop slowly drifts
+   downward as the user scrolls — ties every section to
+   one continuous ambient field (Law of Common Region).
+   Plain scroll listener, independent of GSAP.
+═══════════════════════════════════════════════════ */
+(function ambientDrift() {
+  const root = document.documentElement;
+  const update = () => {
+    const max = root.scrollHeight - root.clientHeight;
+    const progress = max > 0 ? root.scrollTop / max : 0;
+    root.style.setProperty('--ambient-y', (progress * 100) + '%');
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+
+/* ═══════════════════════════════════════════════════
    E. THREE.JS HERO — CUBE + PARTICLE FIELD
    ──────────────────────────────────────────────────
    Two passes in one scene:
@@ -2305,6 +2412,19 @@ if (LIBS_OK) {
   });
   const edgeMesh = new THREE.LineSegments(edgesGeo, edgeMat);
 
+  // Soft additive halo — a slightly larger duplicate of the edges,
+  // rendered with additive blending to fake a bloom/glow without
+  // a full post-processing pipeline.
+  const haloGeo = new THREE.EdgesGeometry(new THREE.BoxGeometry(1.48, 1.48, 1.48));
+  const haloMat = new THREE.LineBasicMaterial({
+    color: 0xc4b5fd,
+    transparent: true,
+    opacity: 0.18,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false,
+  });
+  const haloMesh = new THREE.LineSegments(haloGeo, haloMat);
+
   // Inner fill — very faint so edges pop
   const fillMat  = new THREE.MeshStandardMaterial({
     color: 0x100818,
@@ -2317,7 +2437,7 @@ if (LIBS_OK) {
 
   // Cube group positioned right-of-centre
   const cubeGroup = new THREE.Group();
-  cubeGroup.add(fillMesh, edgeMesh);
+  cubeGroup.add(fillMesh, edgeMesh, haloMesh);
   cubeGroup.position.set(2.8, 0, 0);   // right side of hero
   root.add(cubeGroup);
 
@@ -2347,8 +2467,18 @@ if (LIBS_OK) {
     color: 0x2dd4bf, transparent: true, opacity: 0.45,
   });
   const smallCube = new THREE.LineSegments(smallEdges, smallMat);
-  smallCube.position.set(1.5, -1.1, 0.5);
-  root.add(smallCube);
+
+  const smallHaloGeo = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.62, 0.62, 0.62));
+  const smallHaloMat = new THREE.LineBasicMaterial({
+    color: 0x2dd4bf, transparent: true, opacity: 0.12,
+    blending: THREE.AdditiveBlending, depthWrite: false,
+  });
+  const smallHalo = new THREE.LineSegments(smallHaloGeo, smallHaloMat);
+
+  const smallGroup = new THREE.Group();
+  smallGroup.add(smallCube, smallHalo);
+  smallGroup.position.set(1.5, -1.1, 0.5);
+  root.add(smallGroup);
 
   /* ── Mouse parallax tracking ── */
   let tRotX = 0, tRotY = 0;   // target
@@ -2392,9 +2522,15 @@ if (LIBS_OK) {
     cubeGroup.rotation.y = t * 0.34;
     cubeGroup.rotation.z = t * 0.09;
 
+    /* Gentle breathing scale — subtle "alive" feel */
+    const breathe = 1 + Math.sin(t * 0.5) * 0.025;
+    cubeGroup.scale.setScalar(breathe);
+
     /* Rotate secondary cube — slightly faster, opposite axis */
-    smallCube.rotation.x = -t * 0.45;
-    smallCube.rotation.y =  t * 0.6;
+    smallGroup.rotation.x = -t * 0.45;
+    smallGroup.rotation.y =  t * 0.6;
+    const smallBreathe = 1 + Math.sin(t * 0.7 + 1.2) * 0.04;
+    smallGroup.scale.setScalar(smallBreathe);
 
     /* Subtle cube hover bob */
     cubeGroup.position.y = Math.sin(t * 0.7) * 0.18;
